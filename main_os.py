@@ -26,6 +26,10 @@ def start_device_screen_loop():
     global device_screen
     device_screen.display_loop()
 
+def gen_home_screen():
+    home_screen = assets.home_screen
+    
+
 def main_handler():
     global device_screen, events
     update_display()

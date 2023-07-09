@@ -1,3 +1,5 @@
+import screen, colors
+
 class App:
     '''
     The App class has several rules you must follow.
@@ -36,3 +38,6 @@ class App:
 
     def get_icon(self):
         return self.icon
+
+    def launch(self):
+        return screen.Screen(background_color=colors.LIGHT_GREY)
