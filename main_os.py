@@ -1,14 +1,16 @@
-import display_api, app_handler, pygame, assets, time, config
+import display_api, app_handler, pygame, assets, time, config, display_objects, image_handler
 
 device_screen = display_api.DeviceScreen()
 events = []
+registered_apps = False
 
 def setup():
-    global main_screen, device_screen
+    global main_screen, device_screen, external_apps, registered_apps
     external_apps = app_handler.register_apps()
     # do all the registering and setup here
-
+    registered_apps = True
     main_handler()
+    
 
 def handle_render():
     global events, device_screen
@@ -28,15 +30,21 @@ def start_device_screen_loop():
 
 def gen_home_screen():
     home_screen = assets.home_screen
-    
+    first_app = external_apps[0]
+    app_icon = display_objects.DisplayObject(first_app.get_icon())
+    home_screen.add_object(app_icon, (10, 10))
+    return home_screen
 
 def main_handler():
     global device_screen, events
+
+    home_screen = gen_home_screen()
+
     update_display()
     device_screen.set_screen(assets.startup_screen)
     update_display()
     time.sleep(config.get_int('logo_display_time'))
-    device_screen.set_screen(assets.home_screen)
+    device_screen.set_screen(home_screen)
     while True:
         update_display()
 
