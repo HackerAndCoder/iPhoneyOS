@@ -1,4 +1,4 @@
-import display_api, app_handler, pygame, assets, time, config, display_objects, image_handler
+import display_api, app_handler, pygame, assets, time, config, display_objects, image_handler, math
 
 device_screen = display_api.DeviceScreen()
 events = []
@@ -29,11 +29,13 @@ def start_device_screen_loop():
     device_screen.display_loop()
 
 def gen_home_screen():
-    home_screen = assets.home_screen
-    first_app = external_apps[0]
-    app_icon = display_objects.DisplayObject(first_app.get_icon())
-    home_screen.add_object(app_icon, (10, 10))
-    return home_screen
+    screen_num = math.ceil(len(external_apps)/6)
+    app_array = [[None]*6 for i in range(screen_num)]
+    for i in range(0, screen_num, 6):
+        print(i)
+    print(app_array)
+
+    return external_apps[0].launch()
 
 def main_handler():
     global device_screen, events
