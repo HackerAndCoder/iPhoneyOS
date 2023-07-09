@@ -32,6 +32,9 @@ def main_handler():
     device_screen.set_screen(assets.startup_screen)
     update_display()
     time.sleep(config.get_int('logo_display_time'))
+    device_screen.set_screen(assets.home_screen)
+    while True:
+        update_display()
 
 
 if __name__ == '__main__':

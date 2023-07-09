@@ -5,10 +5,10 @@ class ScreenImportance:
     FOREGROUND = 1
 
 class Screen:
-    def __init__(self, origin = 'default', name = 'default', size = None, objects = [], background_color = colors.WHITE):
+    def __init__(self, origin = 'default', name = 'default', size = None, background_color = colors.WHITE):
         self.origin = origin
         self.name = name
-        self.objects = objects
+        self.objects = []
         self.background_color = background_color
         self._name = f'{self.origin}:{self.name}'
         if not size:
@@ -16,9 +16,8 @@ class Screen:
         else:
             self.size = size
     
-    def add_object(self, object : display_objects.DisplayObject, pos = (0, 0), importance = ScreenImportance.BACKGROUND):
+    def add_object(self, object, pos = (0, 0), importance = ScreenImportance.BACKGROUND):
         self.objects.append([object, pos, importance])
-        return True
     
     def set_background_color(self, color):
         self.background_color = color
