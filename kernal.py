@@ -32,12 +32,8 @@ def start_device_screen_loop():
 def gen_home_screen():
     screen_num = math.ceil(len(external_apps)/6)
     app_array = [[None]*6 for i in range(screen_num)]
-    for i in range(0, screen_num, 6):
-        print(i)
-    print(app_array)
-    print(sys_apps[0].local_name)
 
-    return sys_apps[0].launch()
+    return external_apps[0].launch()
 
 def main_handler():
     global device_screen, events
