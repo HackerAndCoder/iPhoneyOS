@@ -1,3 +1,3 @@
-import main_os
+import kernal
 
-main_os.setup()
+kernal.setup()
