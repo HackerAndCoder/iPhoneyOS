@@ -5,8 +5,9 @@ events = []
 registered_apps = False
 
 def setup():
-    global main_screen, device_screen, external_apps, registered_apps
+    global main_screen, device_screen, external_apps, registered_apps, sys_apps 
     external_apps = app_handler.register_apps()
+    sys_apps = app_handler.register_sys_apps()
     # do all the registering and setup here
     registered_apps = True
     main_handler()
@@ -34,8 +35,9 @@ def gen_home_screen():
     for i in range(0, screen_num, 6):
         print(i)
     print(app_array)
+    print(sys_apps[0].local_name)
 
-    return external_apps[0].launch()
+    return sys_apps[0].launch()
 
 def main_handler():
     global device_screen, events
