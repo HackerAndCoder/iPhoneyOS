@@ -5,7 +5,7 @@ class SystemApp:
         self.local_name = local_name
         self.is_system_app = True
     
-    def get_result(self, action, data = {}):
+    def get_result(self, event, data = {}):
         return (Action.NONE, {})
     
     def launch(self):

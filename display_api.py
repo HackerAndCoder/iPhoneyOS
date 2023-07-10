@@ -1,4 +1,4 @@
-import pygame, screen, colors, image_handler
+import pygame, screen, colors, image_handler, events
 
 pygame.init()
 
@@ -27,6 +27,10 @@ class DeviceScreen:
         # handle events 
         for event in pygame.event.get():
             self.events.append(event)
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            
 
     def get_events(self):
         events = self.events.copy()

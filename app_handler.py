@@ -1,7 +1,7 @@
 import os, sys
 
-apps = []
-sys_apps = []
+apps = {}
+sys_apps = {}
 
 current_app_class = ''
 
@@ -16,7 +16,7 @@ def register_apps():
         app_address = str(app_name)
         exec(f'import {app_address}')
         exec(f'global current_app_class; current_app_class = {app_name}.app')
-        apps.append(current_app_class)
+        apps[current_app_class.local_name] = current_app_class
     return apps
 
 def register_sys_apps():
@@ -29,9 +29,6 @@ def register_sys_apps():
         app_name = app.split('.')[0]
         app_address = str(app_name)
         exec(f'import {app_address}')
-        try:
-            exec(f'global current_app_class; current_app_class = {app_name}.app')
-        except:
-            print(f'Skipped import for {app_name}') # FIX for linux. <-- this error always occurs on linux. It tries importing the base classes than crashes 
-        sys_apps.append(current_app_class)
+        exec(f'global current_app_class; current_app_class = {app_name}.app')
+        sys_apps[current_app_class.local_name] = current_app_class
     return sys_apps
