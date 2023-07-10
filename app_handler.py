@@ -29,6 +29,9 @@ def register_sys_apps():
         app_name = app.split('.')[0]
         app_address = str(app_name)
         exec(f'import {app_address}')
-        exec(f'global current_app_class; current_app_class = {app_name}.app')
+        try:
+            exec(f'global current_app_class; current_app_class = {app_name}.app')
+        except:
+            print(f'Skipped import for {app_name}') # FIX for linux. <-- this error always occurs on linux. It tries importing the base classes than crashes 
         sys_apps.append(current_app_class)
     return sys_apps
