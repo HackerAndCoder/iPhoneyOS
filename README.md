@@ -5,4 +5,4 @@ This project is a custom Operating system soon to be optimised for a rasberrry p
 
 Very early in devepment!
 
-Only supported on windows. Linux support is planned for the near future
+Currently is only supported on Windows and Linux
