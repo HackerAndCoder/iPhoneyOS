@@ -52,9 +52,10 @@ def gen_home_screen():
         _home_screen[screen_num].add_object(DisplayObject(app.get_icon()), (app_display_x, app_display_y))
 
         app_location_num += 1
-        if app_location_num > 6:
+        if app_location_num > 5:
             screen_num += 1
             app_location_num = 0
+    print(app_array)
 
     return _home_screen
 
