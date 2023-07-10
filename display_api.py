@@ -1,4 +1,4 @@
-import pygame, screen, colors
+import pygame, screen, colors, image_handler
 
 pygame.init()
 
@@ -12,6 +12,7 @@ class DeviceScreen:
         self._clear_screen()
 
         pygame.display.set_caption("iPhoney OS")
+        pygame.display.set_icon(image_handler.get_icon_image('iphoneyos.png'))
 
     def display_loop(self):
         while self.update:
