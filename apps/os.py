@@ -6,3 +6,4 @@ class OS(system_app_class.SystemApp):
     
     def get_result(self, action, data={}):
         return super().get_result(action, data)
+    
