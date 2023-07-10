@@ -11,6 +11,8 @@ class DeviceScreen:
         self.fps_clock = pygame.time.Clock()
         self._clear_screen()
 
+        pygame.display.set_caption("iPhoney OS")
+
     def display_loop(self):
         while self.update:
             self.fps_clock.tick(30)
