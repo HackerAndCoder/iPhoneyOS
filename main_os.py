@@ -52,4 +52,4 @@ def main_handler():
 
 
 if __name__ == '__main__':
-    setup()
+    Exception(‘main_os.py is depreciated, use kernal.py’)
