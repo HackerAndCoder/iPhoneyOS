@@ -1,13 +1,15 @@
 import display_api, app_handler, pygame, assets, time, config, image_handler, math, screen
 from display_objects import *
 from events import *
+# temp
+import random
 
 device_screen = display_api.DeviceScreen()
 registered_apps = False
 os_core = None
 
 def setup():
-    global main_screen, device_screen, external_apps, registered_apps, sys_apps, os_core
+    global main_screen, device_screen, external_apps, registered_apps, sys_apps, os_core, current_running_app
     external_apps = app_handler.register_apps()
     sys_apps = app_handler.register_sys_apps()
 
@@ -15,6 +17,7 @@ def setup():
         i = sys_apps[i_key]
         if i.local_name == config.get_string('os_core_local_name'):
             os_core = i
+            current_running_app = os_core
             break
     if not os_core:
         Exception('Couldn\'t find operating system core. Exitting...')
@@ -30,7 +33,7 @@ def run_action(action, data):
     pass
 
 def handle_events():
-    global os_core
+    global os_core, current_running_app
     events = device_screen.get_events()
     if events:
         for event in events:
@@ -46,7 +49,7 @@ def handle_events():
                 data = {"pos": event.pos, "rel": event.rel}
             else:
                 event_type = EventType.TICK
-            return os_core.get_result(event_type, data)
+            return current_running_app.get_result(event_type, data)
 
 def gen_home_screen():
     screen_num = math.ceil(len(external_apps)/6)
@@ -54,7 +57,8 @@ def gen_home_screen():
     _home_screen = []
     for i in range(len(app_array)):
         _home_screen.append(screen.Screen())
-        _home_screen[i].add_object(DisplayObject(image_handler.get_image('default_background.png')), (0, 0))
+        _home_image = image_handler.get_image(config.get_string('user_set_background'))
+        _home_screen[i].add_object(DisplayObject(image_handler.resize_image(_home_image, (config.get_int('display_width'), config.get_int('display_height')))), (0, 0))
 
     screen_num = 0
     app_location_num = 0

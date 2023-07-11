@@ -1,4 +1,4 @@
-import screen, colors
+import screen, colors, events
 
 class App:
     '''
@@ -43,3 +43,6 @@ class App:
 
     def launch(self):
         return screen.Screen(background_color=colors.LIGHT_GREY)
+
+    def get_result(event, data):
+        return (events.EventType.NULL, {})
