@@ -1,8 +1,6 @@
 import display_api, app_handler, pygame, assets, time, config, image_handler, math, screen
 from display_objects import *
 from events import *
-# temp
-import random
 
 device_screen = display_api.DeviceScreen()
 registered_apps = False
