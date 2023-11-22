@@ -51,6 +51,9 @@ def run_action(action, data):
     elif action == Action.EXIT_APP:
         set_current_running_app(os_core)
         get_current_app().launch()
+    
+    elif action == Action.UPDATE_SCREEN:
+        device_screen.set_screen(data['screen'])
 
 def handle_events():
     global os_core, current_running_app
