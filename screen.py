@@ -20,15 +20,17 @@ class Screen:
         self.objects.append([object, pos, importance])
     
     def add_objects(self, objects = []):
+        
         '''
         each object should follow this rule
 
         [
             object: put the DisplayObject class here,
             pos: the position your object should be on the screen,
-            importance: the Z importance of your object. Can be a number but for readability should be a ScreenImportance constant.
+            importance: the Z importance of your object.
         ]
         '''
+
         self.objects.append(objects)
     
     def set_background_color(self, color):

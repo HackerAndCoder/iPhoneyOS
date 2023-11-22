@@ -1,4 +1,4 @@
-import pygame, screen, colors, image_handler, events
+import pygame, screen, colors, image_handler, config
 
 pygame.init()
 
