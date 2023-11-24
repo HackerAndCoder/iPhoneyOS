@@ -1,4 +1,4 @@
-import screen, colors
+import screen, colors, events, actions
 
 class App:
     '''
@@ -24,6 +24,8 @@ class App:
         
         self.local_name = local_name
 
+        self.is_system_app = False
+
         # this code allows you to load a custom image for an icon but if you don't specify it will load local_name + "_icon". For example "settings_app" + "_icon" is "settings_app_icon" for the image name (no extension)
         if not icon_image_name:
             self.icon_name = local_name + "_icon"
@@ -41,3 +43,7 @@ class App:
 
     def launch(self):
         return screen.Screen(background_color=colors.LIGHT_GREY)
+
+    def get_result(self, event, data):
+        #print('paint app running')
+        return (actions.Action.NONE, {})

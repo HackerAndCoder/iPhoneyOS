@@ -5,8 +5,8 @@ from config import *
 from colors import *
 
 # images and text initialized here
-logo = DisplayObject(image=resize_image(get_image('iphoneyos.png'), (100, 100)))
-background = DisplayObject(image=resize_image(get_image('default_background.png'), (get_int('display_width'), get_int('display_height'))))
+logo = DisplayImage(image=resize_image(get_image('iphoneyos.png'), (100, 100)))
+background = DisplayImage(image=resize_image(get_image('default_background.png'), (get_int('display_width'), get_int('display_height'))))
 
 # screens initialized here
 startup_screen = Screen(origin='main', name='startup')
