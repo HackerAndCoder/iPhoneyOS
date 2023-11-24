@@ -1,3 +1,0 @@
-import kernal
-
-kernal.setup()
