@@ -25,7 +25,7 @@ class DisplayImage(DisplayObject):
         self._update()
     
     def _update(self):
-        self.to_display = pygame.transform.scale_by(self.image, self.scale)
+        self.to_display = pygame.transform.scale(self.image, (self.scale, self.scale))
     
     def set_image(self, image):
         try:
